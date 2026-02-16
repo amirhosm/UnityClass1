@@ -10,6 +10,7 @@ public class MoveCube : MonoBehaviour
     Rigidbody rb;
     bool isMoving;
     bool canJump;
+    SoundManager soundManager;
 
     void OnEnable()
     {
@@ -22,6 +23,7 @@ public class MoveCube : MonoBehaviour
     void Awake()
     {
         //Debug.Log("Awake");
+        soundManager = GameObject.FindWithTag("SoundManager").GetComponent<SoundManager>();
     }
 
     // Start is called before the first frame update
@@ -55,6 +57,7 @@ public class MoveCube : MonoBehaviour
                 Debug.Log("GetKeyUp");
                 rb.AddForce(Vector3.up * 750);
                 canJump = false;
+                soundManager.PlaySfx_Jump();
                 //transform.DOJump(new Vector3(0, 1.6f, 0), 1, 1, 1);
             }
 
@@ -78,6 +81,7 @@ public class MoveCube : MonoBehaviour
                     isMoving = true;
                     transform.DOLocalMoveX(-2, 0.5f).OnComplete(CompletedMove);
                 }
+                soundManager.PlaySfx_Move();
             }
         }
         if (Input.GetKeyUp(KeyCode.RightArrow))
@@ -97,6 +101,7 @@ public class MoveCube : MonoBehaviour
                     isMoving = true;
                     transform.DOLocalMoveX(2, 0.5f).OnComplete(CompletedMove);
                 }
+                soundManager.PlaySfx_Move();
             }
         }
     }
