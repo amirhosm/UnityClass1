@@ -7,10 +7,12 @@ public class MoveCube : MonoBehaviour
 {
     public float moveSpeed = 0.5f;
     public float rotateSpeed = 0.5f;
+    public Animator characterAnim;
     Rigidbody rb;
     bool isMoving;
     bool canJump;
     SoundManager soundManager;
+    
 
     void OnEnable()
     {
@@ -52,14 +54,21 @@ public class MoveCube : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space))
         {
             Debug.Log("Jump " + canJump);
-            if (canJump)
-            {
-                Debug.Log("GetKeyUp");
-                rb.AddForce(Vector3.up * 750);
-                canJump = false;
+            //if (canJump)
+            //{
                 soundManager.PlaySfx_Jump();
+
+                Debug.Log("GetKeyUp");
+
+                //rb.AddForce(Vector3.up * 750);
+                characterAnim.Play("Jump");
+                canJump = false;
+                
                 //transform.DOJump(new Vector3(0, 1.6f, 0), 1, 1, 1);
-            }
+
+
+
+            //}
 
         }
 
