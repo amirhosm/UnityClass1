@@ -25,12 +25,12 @@ public class SettingPanel : MonoBehaviour
 
         if (PlayerPrefs.GetInt("Sfx") == 0)
         {
-            soundManager.ToggleMusic(true);
+            soundManager.ToggleSfx(true);
             sfxBtnTxt.text = "Sfx OFF";
         }
         else
         {
-            soundManager.ToggleMusic(false);
+            soundManager.ToggleSfx(false);
             sfxBtnTxt.text = "Sfx ON";
         }
     }

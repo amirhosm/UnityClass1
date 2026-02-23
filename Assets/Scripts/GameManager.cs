@@ -17,13 +17,13 @@ public class GameManager : MonoBehaviour
 
     public void OnBTN_StartGame()
     {
-        player.SetActive(true);
+        player.GetComponent<MoveCube>().StartRun();
         uiManager.StartGame();
     }
 
     public void EndGame()
     {
-        player.SetActive(false);
+        player.GetComponent<MoveCube>().Lose();
         uiManager.GameEnd();
     }
 }

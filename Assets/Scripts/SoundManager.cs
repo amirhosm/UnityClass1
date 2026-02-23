@@ -15,6 +15,24 @@ public class SoundManager : MonoBehaviour
     {
         musicSource.clip = musicClip;
         musicSource.Play();
+
+        if (PlayerPrefs.GetInt("Music") == 0)
+        {
+            ToggleMusic(true);
+        }
+        else
+        {
+            ToggleMusic(false);
+        }
+
+        if (PlayerPrefs.GetInt("Sfx") == 0)
+        {
+            ToggleSfx(true);
+        }
+        else
+        {
+            ToggleSfx(false);
+        }
     }
 
     public void PlaySfx_Coin()
